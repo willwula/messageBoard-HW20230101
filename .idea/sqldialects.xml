@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SqlDialectMappings">
+    <file url="file://$PROJECT_DIR$/controllers/accounts/delete.php" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/controllers/accounts/edit.php" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/controllers/accounts/edit_show.php" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/controllers/accounts/show.php" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/controllers/boards/create.php" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/controllers/boards/delete.php" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/controllers/boards/edit.php" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/controllers/boards/edit_show.php" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/controllers/boards/show.php" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/controllers/login.php" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/controllers/signup.php" dialect="MySQL" />
+  </component>
+</project>
