@@ -18,8 +18,9 @@ $edit_level = $row_result["level"];
 
 view("account_edit.view.php" ,[
     'heading' => 'Account Management',
-    'edit_id' => "$edit_id",
-    'edit_name' => "$edit_name",
-    'edit_password' => "$edit_password",
-    'edit_level' => "$edit_level"
+    'edit_id' => $edit_id,
+    'edit_name' => $edit_name,
+    'edit_password' => $edit_password,
+    'edit_level' => $edit_level
+
 ]);

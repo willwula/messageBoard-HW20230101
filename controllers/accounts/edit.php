@@ -4,11 +4,11 @@ use Core\Database;
 
 $config = require base_path('config.php');
 $pdo = new Database($config['database']);
-
-$name = $_POST['edit_name'];
-$password = $_POST['edit_password'];
-$level = $_POST['edit_level'];
-$id = $_POST['edit_id'];
+//dd($_POST);
+$name = $_POST['name'];
+$password = $_POST['password'];
+$level = $_POST['level'];
+$id = $_POST['id'];
 
 if(isset($_POST["action"])&&($_POST["action"]=="edit")){
     $sql_query = "UPDATE user SET name='$name',password='$password',level='$level' WHERE id= '$id' ";

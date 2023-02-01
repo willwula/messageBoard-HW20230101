@@ -5,8 +5,8 @@ use Core\Database;
 $config = require base_path('config.php');
 $pdo = new Database($config['database']);
 
-$name = htmlspecialchars($_GET['name']);
-$no = htmlspecialchars($_GET['no']);
+$name = htmlspecialchars($_POST['name']);
+$no = htmlspecialchars($_POST['no']);
 
 $sql = "DELETE from guestbook where no= ?";
 

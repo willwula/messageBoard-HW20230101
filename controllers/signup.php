@@ -20,27 +20,17 @@ if (isset($_POST['submit'])) {
             $result = $pdo->query($sql);
             try {
                 if ($result) {
-//                    echo '新增成功';
                     echo "
                         <script>
                             window.alert('新增成功！');
                             setTimeout(function(){window.location.href='/';},0);
                         </script>";
-//                    echo "
-//                        <script>
-//                        setTimeout(function(){window.location.href='/';},1000);
-//                        </script>";
                 } else {
                     echo "
                         <script>
                             window.alert('新增失敗！');
                             setTimeout(function(){window.location.href='/signup';},0);
                         </script>";
-//                    echo '新增失敗';
-//                    echo "
-//                <script>
-//                setTimeout(function(){window.location.href='/signup';},1000);
-//                </script>";
                 }
             } catch (PDOException $e) {
                 echo '新增失敗';
@@ -51,11 +41,6 @@ if (isset($_POST['submit'])) {
                             window.alert('此名稱已被使用！');
                             setTimeout(function(){window.location.href='/signup';},0);
                         </script>";
-//            echo '<div class="warning">The Username has already been used ！</div>';
-//            echo "
-//                <script>
-//                setTimeout(function(){window.location.href='/signup';},1000);
-//                </script>";
         }
         } else {
                 echo "
@@ -63,11 +48,6 @@ if (isset($_POST['submit'])) {
                             window.alert('註冊表單尚未完成！');
                             setTimeout(function(){window.location.href='/signup';},0);
                         </script>";
-//        echo '<div class="warning">Uncompleted form！ </div>';
-//        echo "
-//                <script>
-//                setTimeout(function(){window.location.href='/signup';},1000);
-//                </script>";
     }
 }
 

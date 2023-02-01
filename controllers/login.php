@@ -14,11 +14,18 @@ if (isset($_POST['submit'])) {
     $password = htmlspecialchars($_POST['password']);
 
     if ($name && $password) {
-        $sql = "SELECT * FROM user WHERE name = '$name' AND password = '$password'";
-        /** @var $pdo */
-        $result = $pdo->query($sql);
+        $sql = "SELECT * FROM user WHERE name = :name AND password = :password";
+        $result = $pdo->query_execute($sql,[
+            "name" => $name,
+            "password" => $password
+        ]);
         $fin = $result->fetch();
-        $_SESSION = $fin;
+//        $_SESSION = $fin;
+//        dd($_SESSION);
+        @$_SESSION['name'] = $fin['name'];
+        @$_SESSION['password'] = $fin['password'];
+        @$_SESSION['id'] = $fin['id'];
+        @$_SESSION['level'] = $fin['level'];
         $rows = $result->rowCount();
         if ($rows) {
                 echo "
@@ -26,11 +33,6 @@ if (isset($_POST['submit'])) {
                             window.alert('WELCOME！');
                             setTimeout(function(){window.location.href='/show';},0);
                         </script>";
-//            echo '<div class="sucess">welcome！ </div>';
-//            echo "
-//                <script>
-//                setTimeout(function(){window.location.href='/message?name=" . $name . "';},1000);
-//                </script>";
             exit;
         } else {
             echo '<div class="warning">Wrong Username or Password！</div>';
@@ -41,7 +43,7 @@ if (isset($_POST['submit'])) {
         }
     } else {
 
-        echo '<div class="warning">Incompleted form！ </div>';
+        echo '<div class="warning">Uncompleted form！ </div>';
         echo "
             <script>
             setTimeout(function(){window.location.href='/';},2000);

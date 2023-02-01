@@ -33,14 +33,15 @@
                             <select name='level'>
                                 <option <?php if($edit_level=='0'){echo "selected";} ?> value='0'>新進會員</option>
                                 <option <?php if($edit_level=='1'){echo "selected";} ?> value='1'>一般會員</option>
-                                <option <?php if($edit_level=='2'){echo "selected";} ?> value='2'>版面管理員</option>
+                                <option <?php if($edit_level=='2'){echo "selected";} ?> value='2'>超級管理員</option>
                             </select>
                         </label>
                     </td>
                 </tr>
                 <tr>
                     <td colspan="2" style="text-align: center;">
-                        <input name='id' type='hidden' value="<?php echo $edit_id;?>">
+                        <input name='id' type='hidden' value="<?= $edit_id;?>">
+                        <input name='name' type='hidden' value="<?= $edit_name;?>">
                         <input type="hidden" name="action" value='edit'>
                         <input type="submit" name="Submit" value="  更新  ">
                     </td>
