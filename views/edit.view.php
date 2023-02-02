@@ -20,6 +20,12 @@
             <label>
                 <textarea style="font-family: 'Nunito', sans-serif; font-size:20px; width:550px; height:100px;" name="content"><?=$content?></textarea>
             </label>
+            <?php if (isset($errors['subject'])) : ?>
+                <p class="text-red-500 text-xs mt-2"><?= $errors['subject'] ?></p>
+            <?php endif; ?>
+            <?php if (isset($errors['content'])) : ?>
+                <p class="text-red-500 text-xs mt-2"><?= $errors['content'] ?></p>
+            <?php endif; ?>
             <p><input type="submit" name="submit" value="SAVE">
                 <style>
                     input {padding:5px 15px; background:#ccc; border:0 none;

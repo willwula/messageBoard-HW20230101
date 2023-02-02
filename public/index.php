@@ -3,7 +3,10 @@
 //錯誤顯示（開發暫時使用）
 ini_set('display_errors','1');
 error_reporting(E_ALL);
-
+if (!isset($_SESSION))
+{
+    session_start();
+}
 const BATH_PATH = __DIR__ . '/../';
 
 require BATH_PATH . 'Core/functions.php';

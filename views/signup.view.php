@@ -3,7 +3,7 @@
 
     <div class="content">
         <div class="m-b-md">
-            <form name="signup" action="/signup" method="post">
+            <form name="signup" action="/signup/create" method="post">
                 <p>Username : <label>
                         <input type=text name="name" placeholder="Name">
                     </label></p>

@@ -1,11 +1,12 @@
 <?php
 return [
     '/' => 'controllers/index.php',
-    '/login' => 'controllers/login.php',
-    '/logout' => 'controllers/logout.php',
+    '/login' => 'controllers/AuthConfirm/login.php',
+    '/logout' => 'controllers/AuthConfirm/logout.php',
     '/signup' => 'controllers/signup.php',
+    '/signup/create' => 'controllers/AuthConfirm/signup.php',
 
-    '/show' => 'controllers/board_show.php',
+    '/show' => 'controllers/boards/show.php',
     '/boards/create' => 'controllers/boards/create.php',
     '/boards/edit' => 'controllers/boards/edit.php',
     '/boards/edit_show' => 'controllers/boards/edit_show.php',

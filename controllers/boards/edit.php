@@ -14,12 +14,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $subject = htmlspecialchars($_POST['subject']);
     $content = htmlspecialchars($_POST['content']);
     if (!Validator::string($content, 1, 1000)) {
-        $errors['content'] = 'A body of no more than 1,000 characters is required.';
-        $errors['subject'] = 'A title of no more than 1,000 characters is required.';
+        $errors['content'] = 'A body of no more than 1000 characters is required.';
+//        $errors['subject'] = 'A title of no more than 100 characters is required.';
     }
-    if (strlen($content) > 1000) {
+    if (strlen($content) > 1000 ) {
         $errors['content'] = 'The body can not be more than 1000 characters';
-        $errors['subject'] = 'The body can not be more than 1000 characters';
+//        $errors['subject'] = 'The body can not be more than 100 characters';
+    }
+
+    if (!Validator::string($subject, 1, 100)) {
+//        $errors['content'] = 'A body of no more than 1000 characters is required.';
+        $errors['subject'] = 'A title of no more than 100 characters is required.';
+    }
+    if (strlen($subject) > 100) {
+//        $errors['content'] = 'The body can not be more than 1000 characters';
+        $errors['subject'] = 'The body can not be more than 100 characters';
     }
 
     if (empty($errors)) {
@@ -32,8 +41,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-view("board.view.php", [
-    'heading' => 'Create Message',
+view("edit.view.php", [
+    'heading' => 'Edit Message',
+    'no' => $no,
+    'name' => $name,
+    'subject' => $subject,
+    'content' => $content,
     'errors' => $errors
 ]);
 
