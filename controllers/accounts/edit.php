@@ -8,6 +8,3 @@ authorize(@$_POST["action"]&&$_POST["action"]=="edit");
     $update = new User();
     $update->update($name,$password,$level,$id);
     header("Location:/accounts");
-
-
-

@@ -1,5 +1,4 @@
 <?php
-//use Core\Database;
 use Core\Validator;
 use models\User;
 Class signupController
@@ -17,8 +16,8 @@ Class signupController
             if (!Validator::string($this->name, 1, 20)) {
                 $this->errors['name'] = '姓名不可為空或超過20個字元！';
             }
-            if (!Validator::string($this->password, 4, 20)) {
-                $this->errors['password'] = '密碼不可為空且少於4個或超過20個字元！';
+            if (!Validator::string($this->password, 4, 10)) {
+                $this->errors['password'] = '密碼不可為空且少於4個或超過10個字元！';
             }
         }
     }
@@ -53,18 +52,10 @@ $signup = new signupController();
     $signup->signupCheck();
 @$rows = $signup->result->rows;
 
-//    dd($signup->name);
-//if (empty($signup->name) or empty($signup->password)) {
-//    echo "
-//                        <script>
-//                            window.alert('註冊表單尚未完成！');
-//                            setTimeout(function(){window.location.href='/signup';},0);
-//                        </script>";
-//    exit();
-//}
         if ($rows == '0') { //若這個name還未被使用過
+            $hash_password = password_hash($signup->password,PASSWORD_DEFAULT);
             $create = new User();
-            $create->insert($signup->name,$signup->password);
+            $create->insert($signup->name,$hash_password);
             try {
                 if (isset($rows)) {
                     echo "

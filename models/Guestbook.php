@@ -1,9 +1,6 @@
 <?php
-
 namespace models;
-
 use Core\Database;
-
 class Guestbook
 {
     public $connection;
@@ -15,7 +12,6 @@ class Guestbook
     public $total_pages;
     public $find;
     public $row;
-
     // 在建構子將 Database 物件實例化
     public function __construct()
     {
@@ -23,12 +19,11 @@ class Guestbook
         $this->connection = new Database($config['database']);
 //        var_dump($this->connection);
     }
-
     public function getAllmessage($startRow_records,$pageRow_records)
     {
         $sql_query = "SELECT * FROM guestbook";
         $sql_query_limit = $sql_query." LIMIT ".$startRow_records.",".$pageRow_records;
-        $this->result = $this->connection->query_execute($sql_query_limit);
+        $this->result = $this->connection->query_execute($sql_query_limit)->fetchAll();
         $total_records = $this->connection->query($sql_query)->rowCount();
         $this->total_pages = ceil($total_records/$pageRow_records);
         $this->row_result = $this->connection->query_execute($sql_query)->fetch();
@@ -39,7 +34,7 @@ class Guestbook
         $result = $this->connection->query_execute($sql,[
             'name' => $name
         ]);
-        $this->row = $result->fetch();
+        $this->result = $result->fetchAll();
     }
     public function getAllmessageByNo($no)
     {
@@ -69,14 +64,11 @@ class Guestbook
             "no" => $no
         ]);
     }
-
     public function delete($no)
     {
         $sql = "DELETE FROM guestbook WHERE no =:no";
         $this->result = $this->connection->query_execute($sql, [
             'no' => $no
         ]);
-
-
     }
 }

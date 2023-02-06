@@ -1,6 +1,5 @@
 <?php
-
-//錯誤顯示（開發暫時使用）
+//錯誤顯示（暫時使用）
 ini_set('display_errors','1');
 error_reporting(E_ALL);
 if (!isset($_SESSION))
@@ -17,5 +16,4 @@ spl_autoload_register(function ($class) {
 
     require base_path("{$class}.php");
 });
-
 require base_path('Core/router.php');

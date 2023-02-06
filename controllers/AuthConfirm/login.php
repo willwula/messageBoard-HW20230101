@@ -5,7 +5,8 @@ Class loginController
 {
     public $name;
     public $password;
-    public $rows;
+    public $hash_password;
+    public $result;
     public $find;
     protected $login;
     public function __construct()
@@ -17,31 +18,25 @@ Class loginController
     }
     public function loginCheck()
     {
-//    dd(empty($this->name));
-//        $config = require base_path('config.php');
-//        $pdo = new Database($config['database']);
-//        $sql = "SELECT * FROM user WHERE name = :name AND password = :password";
-//        $result = $pdo->query_execute($sql, [
-//            "name" => $this->name,
-//            "password" => $this->password
-//        ]);
-//        $this->find = $result->fetch();
-//        $this->rows = $result->rowCount();
         $this->login = new User();
-        $this->login->findLogin($this->name,$this->password);
+        $this->login->getUserByName($this->name);
+        @$this->hash_password = ($this->login->result['password']);
 
-        @$_SESSION['name'] = $this->login->find['name'];
-        @$_SESSION['password'] = $this->login->find['password'];
-        @$_SESSION['id'] = $this->login->find['id'];
-        @$_SESSION['level'] = $this->login->find['level'];
-        @$_SESSION['rows'] = $this->login->rows;
+        if(@password_verify($this->password,$this->hash_password)) {
+            $this->login->findLogin($this->name, $this->hash_password);
+            @$_SESSION['name'] = $this->login->find['name'];
+            @$_SESSION['password'] = $this->login->find['password'];
+            @$_SESSION['id'] = $this->login->find['id'];
+            @$_SESSION['level'] = $this->login->find['level'];
+            @$_SESSION['rows'] = $this->login->rows;
+        }
     }
 }
 
 $login =new loginController();
     $login->loginCheck();
 
-    if ($_SESSION['rows'] == '1') {
+    if (@$_SESSION['rows'] == '1') {
         echo "
                         <script>
                             window.alert('WELCOME！');
@@ -53,7 +48,7 @@ $login =new loginController();
         echo "
                 <script>
                  window.alert('Please Check Username or Password！');
-                setTimeout(function(){window.location.href='/';},2000);
+                setTimeout(function(){window.location.href='/';},0);
                 </script>";
     }
 

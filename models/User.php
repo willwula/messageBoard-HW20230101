@@ -1,7 +1,6 @@
 <?php
 namespace models;
 use Core\Database;
-
 class User  {
     public $connection;
     public $name;
@@ -18,7 +17,6 @@ class User  {
         $this->connection = new Database($config['database']);
 //        var_dump($this->connection);
     }
-
     public function getAllUser($startRow_records,$pageRow_records)
     {
         $sql_query = "SELECT * FROM user";
@@ -35,9 +33,9 @@ class User  {
         $result = $this->connection->query_execute($sql, [
             "name" => $name
         ]);
+        $this->result = $result->fetch();
         $this->rows = $result->rowCount();
     }
-
     public function getUserById($id)
     {
 
@@ -48,7 +46,6 @@ class User  {
         $this->result = $result->fetch();
         $this->rows = $result->rowCount();
     }
-
     public function findLogin($name,$password)
     {
         $sql = "SELECT * FROM user WHERE name = :name AND password = :password";
@@ -59,16 +56,14 @@ class User  {
         $this->find = $result->fetch();
         $this->rows = $result->rowCount();
     }
-
-    public function insert($name,$password)
+    public function insert($name,$hash_password)
     {
         $sql = "INSERT INTO user(id,name,password) values (null,:name,:password)";
         $this->result = $this->connection->query_execute($sql, [
             "name" => $name,
-            "password" => $password
+            "password" => $hash_password
         ]);
     }
-
     public function update($name,$password,$level,$id): void
     {
         $sql = "UPDATE user SET name=:name,password=:password,level=:level WHERE id=:id ";
@@ -79,7 +74,6 @@ class User  {
             "id" => $id
         ]);
     }
-
     public function delete($userid): void
     {
         $sql = "DELETE FROM user WHERE id =:id";

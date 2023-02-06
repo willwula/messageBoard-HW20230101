@@ -16,5 +16,4 @@ view("account_edit.view.php" ,[
     'edit_name' => $edit_name,
     'edit_password' => $edit_password,
     'edit_level' => $edit_level
-
 ]);
