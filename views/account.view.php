@@ -19,14 +19,14 @@
         <legend><span style="font-size: xx-large; "><strong>帳號管理</strong></legend>
 
         <!--更新及刪除帳號-->
-        <form id="account" name="account" method="POST"  action="/accounts/edit" >
+<!--        <form id="account" name="account" method="POST"   >-->
             <table style="margin: 30px auto; width: 80%; text-align:center ">
                 <tr>
-                    <th style="width: 40%; background:#f6b9b9;  padding: 0 10px;">帳號</th>
-                    <th style="width: 50%; background:#fab4b4;  padding: 0 10px;">身份權限</th>
-                    <th colspan="4" style="width: 10%; background:#f6b2b2;  padding: 0 10px;">動作</th>
+                    <th style="width: 40%; background:#f6b9b9;  padding: 10px;">帳號</th>
+                    <th style="width: 50%; background:#fab4b4;  padding: 10px;">身份權限</th>
+                    <th colspan="4" style="width: 10%; background:#f6b2b2;  padding: 10px;">動作</th>
                 </tr>
-        </form>
+<!--        </form>-->
 
                 <?php
                     foreach($result as $row_result){
@@ -47,21 +47,14 @@
                         echo "<form id='user' name='user' method='POST'  action='/accounts/edit_show'>";
                         echo "<td align='right' colspan='2'  style='background: #FFF;'>";
                         echo "<input name='id' type='hidden' value='{$row_result['id']}'>";
-//                        echo "<input name='name' type='hidden' value='{$row_result['name']}'>";
-//                        echo "<input name='level' type='hidden' value='{$row_result['level']}'>";
-//                        echo "<input name='password' type='hidden' value='{$row_result['password']}'>";
-//                        echo "<a href='/accounts/edit_show?id=".$row_result['id']."'>";
                         echo "<input type='submit' name='button' id='button' value='更新'>";
-//                        echo "</a>";
                         echo "</form>";
                         echo "</td>";
                         echo "<td>";
                         echo "<form id='user' name='user' method='POST'  action='/accounts/delete'>";
                         echo "<input name='id' type='hidden' value='{$row_result['id']}'>";
-//                        echo "<a href='/accounts/delete?id=".$row_result['id']."'>";
                         echo "<input type='hidden' name='action' value='delete' >";
                         echo "<input type='submit' name='button2' id='button2' value='刪除' onclick='return deleteConfirm()'>";
-//                        echo "</a>";
                         echo "</form>";
                         echo "</td>";
                         echo "</tr>";
@@ -76,7 +69,6 @@
                             echo '<td><a href="/accounts?page='.$num_pages.'-1"></td>';
                         }
                     ?>
-
                     <td>
                         <?php
                             for($i=1;$i<=$total_pages;$i++) {
@@ -87,7 +79,6 @@
                                 }
                             }
                         ?>
-
                         <?php
                             if($num_pages < $total_pages){
                                 echo '<td><a href="/accounts?page='.$num_pages.'+1"></a></td>';
@@ -97,6 +88,5 @@
                     </td>
                 </tr>
             </table>
-
     </fieldset>
 </div>

@@ -1,17 +1,11 @@
 <?php
 
-use Core\Database;
+use models\User;
+authorize(@$_POST["action"]&&$_POST["action"]=="delete");
+    $delete = new User();
 
-$config = require base_path('config.php');
-$pdo = new Database($config['database']);
+    $userid = @$_POST['id'];
 
-if(isset($_POST["action"])&&($_POST["action"]=="delete")) {
-
-    $userid = $_POST['id'];
-
-    $sql_query = "DELETE FROM user WHERE id = $userid";
-
-    $result = $pdo->query_execute($sql_query);
+    $delete->delete($userid);
 
     header("Location: /accounts");
-}

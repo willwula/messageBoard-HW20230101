@@ -1,12 +1,9 @@
 <?php
-use Core\Database;
+use models\Guestbook;
 use Core\Validator;
+@$currentUserName = $_SESSION['name'];
 
-require base_path('Core/Validator.php');
-$config = require base_path('config.php');
-$pdo = new Database($config['database']);
-
-$currentUserName = $_SESSION['name'];
+authorize(isset($currentUserName));
 $errors = [];
 
 //送出留言後會檢查是否存在POST，若是則檢查POST傳過來的name是否與SESSION的相同。
@@ -38,9 +35,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     if (empty($errors)) {
-        $sql = "INSERT INTO guestbook(name, subject, content, time) VALUES ('$name', '$subject', '$content', now())";
-        /** @var $pdo */
-        $result = $pdo->query($sql);
+        $pdo = new Guestbook();
+        $pdo->insert($name,$subject,$content);
+
         echo "<script>
                 setTimeout(function(){window.location.href='/show';},0);
               </script>";

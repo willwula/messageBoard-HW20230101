@@ -1,6 +1,6 @@
 <?php
-$name = htmlspecialchars($_SESSION['name']);
-$level = htmlspecialchars($_SESSION['level']);
+@$name = htmlspecialchars($_SESSION['name']);
+@$level = htmlspecialchars($_SESSION['level']);
 //    dd($_SESSION);
 if ($name && $level == '2') {
     echo "<a href='/accounts'>AccMGT</a>";

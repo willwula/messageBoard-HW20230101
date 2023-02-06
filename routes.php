@@ -4,7 +4,7 @@ return [
     '/login' => 'controllers/AuthConfirm/login.php',
     '/logout' => 'controllers/AuthConfirm/logout.php',
     '/signup' => 'controllers/signup.php',
-    '/signup/create' => 'controllers/AuthConfirm/signup.php',
+    '/signup/create' => 'controllers/accounts/create.php',
 
     '/show' => 'controllers/boards/show.php',
     '/boards/create' => 'controllers/boards/create.php',

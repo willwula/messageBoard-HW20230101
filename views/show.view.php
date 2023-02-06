@@ -6,7 +6,6 @@
 
 <div class="note full-height">
         <?php
-//        require base_path('controllers/boards/show.php');
         //從資料庫中撈留言紀錄並顯示
         foreach ($result as $row_result) {
 //    dd($fin);
@@ -26,6 +25,7 @@
                 echo "</td>";
                 echo "<td>";
                 echo "<form class='mt-6' method='POST' action='/boards/delete'>";
+                echo "<input type='hidden' name='action' value='delete'>";
                 echo "<input type='hidden' name='no' value='$no'>";
                 echo "<input type='hidden' name='name' value='$name'>";
                 echo "<button class='text-sm text-red-500'>Delete the message</button>";
@@ -36,7 +36,8 @@
             echo "Time：" . $row_result['time'] . "<br>";
             echo "<hr>";
         }
-?>
+    ?>
+
 <!--            分頁管理-->
             <table border="0" align="center">
                 <tr>
@@ -46,7 +47,6 @@
                             echo '<td><a href="/show?page='.$num_pages.'-1"></td>';
                         }
                     ?>
-
     <td>
         <?php
         for($i=1;$i<=$total_pages;$i++) {
@@ -57,7 +57,6 @@
             }
         }
         ?>
-
         <?php
         if($num_pages < $total_pages){
             echo '<td><a href="/show?page='.$num_pages.'+1"></a></td>';
@@ -67,7 +66,6 @@
     </td>
     </tr>
     </table>
-
 </div>
 
 

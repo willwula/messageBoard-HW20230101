@@ -16,15 +16,15 @@
                 </tr>
                 <tr>
                     <td style="width: 50%; background:#eee;  padding: 0 10px;">Step1:登入帳號 </td>
-                    <td><label for="name"></label><input type="text" name="name" id="name" style="width: 200px;" value="<?php echo $edit_name;?>"></td>
+                    <td><label for="name"></label><input type="text" name="name" id="name" style="width: 200px;" value="<?= $edit_name;?>"></td>
                 </tr>
                 <tr>
                     <td style="width: 50%; background:#eee;  padding: 0 10px;">Step2:登入密碼 </td>
-                    <td><label for="password"></label><input type="password" name="password" id="password" style="width: 200px;" value="<?php echo $edit_password;?>"></td>
+                    <td><label for="password"></label><input type="password" name="password" id="password" style="width: 200px;" value="<?= $edit_password;?>"></td>
                 </tr>
                 <tr>
                     <td style="width: 50%; background:#eee;  padding: 0 10px;">Step3:再次確認密碼 </td>
-                    <td><label for="re-password"></label><input type="password" name="re-password" id="re-password" style="width: 200px;" value="<?php echo $edit_password;?>"></td>
+                    <td><label for="re-password"></label><input type="password" name="re-password" id="re-password" style="width: 200px;" value="<?= $edit_password;?>"></td>
                 </tr>
                 <tr>
                     <td style="width: 50%; background:#eee;  padding: 0 10px;">Step4:權限等級 </td>
@@ -40,9 +40,9 @@
                 </tr>
                 <tr>
                     <td colspan="2" style="text-align: center;">
-                        <input name='id' type='hidden' value="<?= $edit_id;?>">
-                        <input name='name' type='hidden' value="<?= $edit_name;?>">
-                        <input type="hidden" name="action" value='edit'>
+                        <input name="id" type="hidden" value="<?= $edit_id;?>">
+<!--                        <input name="name" type="hidden" value="--><?php //= $edit_name;?><!--">-->
+                        <input type="hidden" name="action" value="edit">
                         <input type="submit" name="Submit" value="  更新  ">
                     </td>
                 </tr>

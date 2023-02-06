@@ -1,16 +1,10 @@
 <?php
-
-use Core\Database;
-
-$config = require base_path('config.php');
-$pdo = new Database($config['database']);
-
-if (!isset($_SESSION)) {
-    session_start();
-}
+use models\User;
 $userid=$_POST["id"];
-$sql_query = "SELECT * FROM user WHERE id = $userid";
-$row_result = $pdo->query($sql_query)->fetch();
+$pdo = new User();
+$pdo->getUserById($userid);
+
+$row_result = $pdo->result;
 $edit_id = $row_result['id'];
 $edit_name = $row_result["name"];
 $edit_password = $row_result["password"];

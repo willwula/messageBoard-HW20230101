@@ -1,10 +1,6 @@
 <?php
-
-use Core\Database;
+use models\Guestbook;
 use Core\Validator;
-
-require base_path('Core/Validator.php');
-$config = require base_path('config.php');
 
 $errors = [];
 
@@ -32,21 +28,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     if (empty($errors)) {
-        $pdo = new Database($config['database']);
-        $sql = "UPDATE guestbook SET subject='$subject',content='$content' where no= ? ";
-        $result = $pdo->query_execute($sql,[$no]);
+        $pdo = new Guestbook();
+        $pdo->update($subject,$content,$no);
         echo "<script>
                 setTimeout(function(){window.location.href='/show';},0);
               </script>";
     }
 }
-
 view("edit.view.php", [
     'heading' => 'Edit Message',
     'no' => $no,
-    'name' => $name,
-    'subject' => $subject,
-    'content' => $content,
+    'name' => $pdo->name,
+    'subject' => $pdo->subject,
+    'content' => $pdo->content,
     'errors' => $errors
 ]);
-

@@ -10,6 +10,12 @@
                 <p>Password : <label>
                         <input type=password name="password" placeholder="Password">
                     </label></p>
+                <?php if (isset($errors['name'])) : ?>
+                    <p class="text-red-500 text-xs mt-2"><?= $errors['name'] ?></p>
+                <?php endif; ?>
+                <?php if (isset($errors['password'])) : ?>
+                    <p class="text-red-500 text-xs mt-2"><?= $errors['password'] ?></p>
+                <?php endif; ?>
                 <p><input type="submit" name="submit" value="Sign up">
                     <style>
                         input {padding:5px 15px; background:#ccc; border:0 none;
