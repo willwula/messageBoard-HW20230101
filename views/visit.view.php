@@ -1,7 +1,7 @@
 <?php require('partials/head.php'); ?>
 
     <div class="top-right home">
-        <?php require('partials/nav.php'); ?>
+        <?php require('partials/nav_login.php'); ?>
     </div>
 
 <div class="note full-height">

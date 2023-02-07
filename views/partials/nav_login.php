@@ -15,5 +15,7 @@ if ($name && $level == '2') {
     echo "<a href='/logout'>登出</a>";
 }
 else {
+    echo "<a href='/visit'>訪客瀏覽</a>";
     echo "<a href='/'>登入</a>";
+    echo "<a href='/signup'>註冊會員</a>";
 }

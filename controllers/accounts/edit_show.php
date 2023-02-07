@@ -1,9 +1,9 @@
 <?php
 use models\User;
-$userid=$_POST["id"];
+@$userid=$_POST["id"];
 $pdo = new User();
 $pdo->getUserById($userid);
-
+authorize($pdo->rows == '1');
 $row_result = $pdo->result;
 $edit_id = $row_result['id'];
 $edit_name = $row_result["name"];

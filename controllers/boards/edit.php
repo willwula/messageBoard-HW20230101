@@ -1,7 +1,8 @@
 <?php
 use models\Guestbook;
 use Core\Validator;
-
+@$currentUserName = $_SESSION['name'];
+authorize(isset($currentUserName));
 $errors = [];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

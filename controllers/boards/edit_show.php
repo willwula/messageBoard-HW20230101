@@ -1,8 +1,9 @@
 <?php
 use models\Guestbook;
-$currentUserName = $_SESSION['name'];
-$name = htmlspecialchars($_POST['name']);
-$no = htmlspecialchars($_POST['no']);
+@$currentUserName = $_SESSION['name'];
+@$name = htmlspecialchars($_POST['name']);
+@$no = htmlspecialchars($_POST['no']);
+authorize(isset($currentUserName));
 $result = new Guestbook();
 $result->getAllmessageByNo($no);
 authorize($result->row['name'] === $currentUserName or $currentUserName == 'admin');
