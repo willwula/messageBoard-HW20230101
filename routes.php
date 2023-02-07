@@ -6,7 +6,9 @@ return [
     '/signup' => 'controllers/signup.php',
     '/signup/create' => 'controllers/accounts/create.php',
 
+    '/visit' => 'controllers/boards/visit.php',
     '/show' => 'controllers/boards/show.php',
+    '/showAll' => 'controllers/boards/showAll.php',
     '/boards/create' => 'controllers/boards/create.php',
     '/boards/edit' => 'controllers/boards/edit.php',
     '/boards/edit_show' => 'controllers/boards/edit_show.php',

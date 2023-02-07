@@ -3,7 +3,7 @@
 
     <div class="content">
         <div>
-            <img src="img/dog2.png" style="display:block; margin-top: 300px;" alt="" >
+            <img src="img/dog3.png" style="display:block; margin-top: 300px;" alt="" >
         </div>
         <div class="m-b-md">
             <form name="login" action="/login" method="post">

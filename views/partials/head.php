@@ -7,9 +7,6 @@
 </head>
 <?php
     include base_path('style.html');
-    if (!isset($_SESSION)) {
-        session_start();
-    }
 ?>
 <body>
 <div class="flex-center position-ref full-height">
