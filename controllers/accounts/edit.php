@@ -1,9 +1,9 @@
 <?php
 use models\User;
-@$name = $_POST['name'];
-@$password = $_POST['password'];
-@$level = $_POST['level'];
-@$id = $_POST['id'];
+@$name = htmlspecialchars(strip_tags($_POST['name']));
+@$password = htmlspecialchars(strip_tags($_POST['password']));
+@$level = htmlspecialchars(strip_tags($_POST['level']));
+@$id = htmlspecialchars(strip_tags($_POST['id']));
 authorize(@$_POST["action"]&&$_POST["action"]=="edit");
     $update = new User();
     $update->update($name,$password,$level,$id);

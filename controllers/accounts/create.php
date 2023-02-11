@@ -11,8 +11,8 @@ Class signupController
     public function __construct()
     {
         if (isset($_POST['submit'])) {
-            $this->name = htmlspecialchars($_POST['name']);
-            $this->password = htmlspecialchars($_POST['password']);
+            $this->name = htmlspecialchars(strip_tags($_POST['name']));
+            $this->password = htmlspecialchars(strip_tags($_POST['password']));
             if (!Validator::string($this->name, 1, 20)) {
                 $this->errors['name'] = '姓名不可為空或超過20個字元！';
             }

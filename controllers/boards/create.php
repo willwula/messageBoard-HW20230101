@@ -12,9 +12,9 @@ $errors = [];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     authorize($currentUserName == $_POST['name']);
-    $name = htmlspecialchars($_POST['name']);
-    $subject = htmlspecialchars($_POST['subject']);
-    $content = htmlspecialchars($_POST['content']);
+    $name = htmlspecialchars(strip_tags($_POST['name']));
+    $subject = htmlspecialchars(strip_tags($_POST['subject']));
+    $content = htmlspecialchars(strip_tags($_POST['content']));
     if (!Validator::string($content, 1, 1000)) {
         $errors['content'] = 'A body of no more than 1000 characters is required.';
 //        $errors['subject'] = 'A title of no more than 100 characters is required.';
