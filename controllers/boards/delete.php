@@ -7,7 +7,7 @@ $delete->getAllmessageByNo($_POST['no']);
 //dd($_POST);
 //$name = $delete->result['0']['name'];
 //dd($_SESSION['name']);
-authorize($_POST['name'] == $_SESSION['name']);
+authorize($_POST['name'] == $_SESSION['name'] or 'admin');
 $no = @$_POST['no'];
 $delete->delete($no);
 echo "
